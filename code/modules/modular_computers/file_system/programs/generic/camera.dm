@@ -7,14 +7,12 @@
 		return
 
 	switch(network)
-		if(NETWORK_CARGO)
-			return access_cargo
-		if(NETWORK_ENGINEERING, NETWORK_MAINTENANCE, NETWORK_ALARM_ATMOS, NETWORK_ALARM_CAMERA, NETWORK_ALARM_FIRE, NETWORK_ALARM_POWER)
+		if(NETWORK_ENGINEERING, NETWORK_ALARM_ATMOS, NETWORK_ALARM_CAMERA, NETWORK_ALARM_FIRE, NETWORK_ALARM_POWER)
 			return access_engineering
 		if(NETWORK_MEDICAL)
 			return access_medical
 		if(NETWORK_MINE)
-			return access_mining
+			return access_cargo // Cargo office - all cargo staff should have access here.
 		if(NETWORK_RESEARCH)
 			return access_research
 		if(NETWORK_THUNDER)
