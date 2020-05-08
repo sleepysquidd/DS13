@@ -7,6 +7,7 @@
 /obj/item/weapon/reagent_containers/ivbag
 	name = "\improper IV bag"
 	desc = "Flexible bag for IV injectors."
+	var/written_info
 	icon = 'icons/obj/bloodpack.dmi'
 	icon_state = "empty"
 	w_class = ITEM_SIZE_SMALL
@@ -29,7 +30,15 @@
 	else
 		w_class = ITEM_SIZE_SMALL
 
-/obj/item/weapon/reagent_containers/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/weapon/reagent_containers/ivbag/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/weapon/pen))
+		written_info = sanitize(input("Notes: ", text("IV Bag")))
+		if(written_info)
+			desc = "Flexible bag for IV injectors.\nA note is scribbled on the bag. \"[written_info]\""
+		else
+			desc = "Flexible bag for IV injectors."
+		return TRUE
+	. = ..()
 
 /obj/item/weapon/reagent_containers/ivbag/update_icon()
 	overlays.Cut()
@@ -86,29 +95,43 @@
 	reagents.add_reagent(/datum/reagent/nanoblood, volume)
 
 /obj/item/weapon/reagent_containers/ivbag/blood
-	name = "blood pack"
+	name = "\improper blood pack"
 	var/blood_type = null
 
 /obj/item/weapon/reagent_containers/ivbag/blood/New()
 	..()
 	if(blood_type)
-		name = "blood pack [blood_type]"
+		name = "\improper blood pack [blood_type]"
 		reagents.add_reagent(/datum/reagent/blood, volume, list("donor" = null, "blood_DNA" = null, "blood_type" = blood_type, "trace_chem" = null, "virus2" = list(), "antibodies" = list()))
 
+/obj/item/weapon/reagent_containers/ivbag/blood/ABPlus
+	name = "\improper blood pack AB+"
+	blood_type = "AB+"
+
+/obj/item/weapon/reagent_containers/ivbag/blood/ABMinus
+	name = "\improper blood pack AB-"
+	blood_type = "AB-"
+
 /obj/item/weapon/reagent_containers/ivbag/blood/APlus
+	name = "\improper blood pack A+"
 	blood_type = "A+"
 
 /obj/item/weapon/reagent_containers/ivbag/blood/AMinus
+	name = "\improper blood pack A-"
 	blood_type = "A-"
 
 /obj/item/weapon/reagent_containers/ivbag/blood/BPlus
+	name = "\improper blood pack B+"
 	blood_type = "B+"
 
 /obj/item/weapon/reagent_containers/ivbag/blood/BMinus
+	name = "\improper blood pack B-"
 	blood_type = "B-"
 
 /obj/item/weapon/reagent_containers/ivbag/blood/OPlus
+	name = "\improper blood pack O+"
 	blood_type = "O+"
 
 /obj/item/weapon/reagent_containers/ivbag/blood/OMinus
+	name = "\improper blood pack O-"
 	blood_type = "O-"

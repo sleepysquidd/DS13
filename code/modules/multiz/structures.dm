@@ -172,14 +172,12 @@
 			return FALSE
 	playsound(src, pick(climbsounds), 50)
 	playsound(target_ladder, pick(climbsounds), 50)
-	var/atom/movable/pulled_atom
-	if (M.pulling)
-		pulled_atom = M.pulling
+
 	.= M.Move(T)
 
+	var/atom/movable/pulled_atom = M.pulling
 	if (pulled_atom)
-		pulled_atom.Move(T)
-		M.start_pulling(pulled_atom)
+		pulled_atom.forceMove(T)
 
 /obj/structure/ladder/CanPass(obj/mover, turf/source, height, airflow)
 	return airflow || !density
@@ -215,7 +213,7 @@
 			above.ChangeTurf(/turf/simulated/open)
 	. = ..()
 
-/obj/structure/stairs/Uncross(atom/movable/A)
+/obj/structure/stairs/Exit(atom/movable/A)
 	if(A.dir == dir && upperStep(A.loc))
 		// This is hackish but whatever.
 		var/turf/target = get_step(GetAbove(A), dir)

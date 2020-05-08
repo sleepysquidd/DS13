@@ -33,11 +33,4 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - experiment: "The Marker's activation time has been delayed. It will now activate somewhere in the region of 38 to 51 minutes into the round"
-  - rscdel: "Necromorph corpses will now vanish when they have been fully reclaimed by the marker. But only when noone is looking...."
-  - tweak: "Slightly buffed max health of Slasher from 70 to 75"
-  - tweak: "Severed limb damage multiplier reduced from 1.4 to 1.3"
-  - tweak: "Necromorph limb health factor reduced from 0.65 to 0.6"
-  - tweak: "Client framerate is now set to 40 fps (was 14)"
-  - tweak: "Server framerate is now set to 20 fps (was 14)"
-  - bugfix: "Possess no longer works on dead necromorphs"
+  - bugfix: "Fixed and improved the Jump to Shard verb"

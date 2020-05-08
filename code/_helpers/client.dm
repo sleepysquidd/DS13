@@ -1,10 +1,3 @@
-/proc/dragged(var/params)
-	var/list/L = params2list(params)
-	var/dragged = L["drag"]
-	if(dragged && !L[dragged])
-		return	TRUE
-	return FALSE
-
 /client/proc/resolve_drag(var/atom/A, var/params)
 	var/list/L = params2list(params)
 	var/dragged = L["drag"]
@@ -25,7 +18,14 @@
 	return client
 
 /mob/observer/eye/get_client()
-	. = client || (owner && owner.get_client())
+	if (client)
+		return client
+
+	if (owner && owner != src)
+		return owner.get_client()
+
+/mob/observer/eye/signal/get_client()
+	return client
 
 /mob/observer/virtual/get_client()
 	return host.get_client()

@@ -89,8 +89,8 @@
 	var/mag_insert_sound
 	var/mag_remove_sound
 
-/obj/item/weapon/gun/New()
-	..()
+/obj/item/weapon/gun/Initialize()
+	.=..()
 	for(var/i in 1 to firemodes.len)
 		var/list/L = firemodes[i]
 
@@ -111,6 +111,19 @@
 
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
+
+/obj/item/weapon/gun/Destroy()
+	if (current_firemode)
+		current_firemode.unapply_to(src)
+	for (var/a in firemodes)
+		if (istype(a, /datum/firemode))
+			qdel(a)
+
+	firemodes = list()
+
+	disable_aiming_mode()
+	//TODO: Delete ACH click handler
+	.=..()
 
 //Called when the user moves while holding this gun.
 //Must be manually registered to the moved event if your gun needs it
@@ -220,7 +233,7 @@
 /obj/item/weapon/gun/proc/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
 	if(world.time < next_fire_time)
 		if (!silent && !suppress_delay_warning && world.time % 3) //to prevent spam
-			user << SPAN_WARNING("[src] is not ready to fire again!")
+			to_chat(user, SPAN_WARNING("[src] is not ready to fire again!"))
 		return FALSE
 
 	if(target && user && (target.z != user.z))

@@ -5,12 +5,19 @@
 	var/interval_timer_handle
 	var/last_change = 0
 
+
 /datum/click_handler/rmb_aim/New(var/mob/user)
 	.=..()
 	user.client.show_popup_menus = FALSE
 
+
+/datum/click_handler/rmb_aim/Exit()
+	if (user && user.client)
+		user.client.show_popup_menus = TRUE
+	.=..()
+
 /datum/click_handler/rmb_aim/Destroy()
-	if (user)
+	if (user && user.client)
 		user.client.show_popup_menus = TRUE
 	if (gun)
 		gun.disable_aiming_mode()
