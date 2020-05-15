@@ -128,11 +128,9 @@
 		control_area = get_area(src)
 	else if(istext(control_area))
 		for(var/area/A in world)
-			if(A.name && (strip_improper(A.name)==control_area))
+			if(A.name && A.name==control_area)
 				control_area = A
 				break
-
-
 
 	if(control_area)
 		var/area/A = control_area
@@ -140,8 +138,6 @@
 			A.turret_controls += src
 		else
 			control_area = null
-
-
 
 	//Fill out the targeting profiles list
 	var/templist = targeting_profiles.Copy()

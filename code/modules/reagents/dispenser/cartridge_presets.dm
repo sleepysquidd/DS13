@@ -69,6 +69,7 @@
 
 	// ERT
 	inaprov		spawn_reagent = /datum/reagent/inaprovaline
+	ryetalyn	spawn_reagent = /datum/reagent/ryetalyn
 	paracetamol	spawn_reagent = /datum/reagent/paracetamol
 	tramadol	spawn_reagent = /datum/reagent/tramadol
 	oxycodone	spawn_reagent = /datum/reagent/tramadol/oxycodone
@@ -89,6 +90,7 @@
 	peridaxon	spawn_reagent = /datum/reagent/peridaxon
 	bicaridine	spawn_reagent = /datum/reagent/bicaridine
 	hyperzine	spawn_reagent = /datum/reagent/hyperzine
+	rezadone	spawn_reagent = /datum/reagent/rezadone
 	spaceacillin	spawn_reagent = /datum/reagent/spaceacillin
 	ethylredox	spawn_reagent = /datum/reagent/ethylredoxrazine
 	sleeptox	spawn_reagent = /datum/reagent/soporific

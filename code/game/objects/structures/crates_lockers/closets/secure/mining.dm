@@ -66,7 +66,6 @@
 		/obj/item/weapon/storage/ore,
 		/obj/item/weapon/tool/shovel,
 		/obj/item/weapon/tool/saw/plasma,
-		/obj/item/weapon/tool/pickaxe/laser,
 		/obj/item/device/flashlight/maglight
 	)
 

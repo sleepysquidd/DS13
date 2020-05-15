@@ -420,6 +420,9 @@
 /datum/reagent/peridaxon
 	value = 6
 
+/datum/reagent/ryetalyn
+	value = 3.6
+
 /datum/reagent/hyperzine
 	value = 3.9
 
@@ -455,6 +458,9 @@
 
 /datum/reagent/tobacco
 	value = 3
+
+/datum/reagent/rezadone
+	value = 5
 
 /datum/reagent/crayon_dust
 	value = 0.001
